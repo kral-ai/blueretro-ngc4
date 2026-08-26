@@ -6,6 +6,14 @@ menu "BlueRetro"
         help
             Select this to enable HW2 features like port detection.
 
+    config RETROSCALER_BLUERETRO_4LEDS_HW
+        bool "RetroScaler NGC 4-port player LEDs"
+        default n
+        help
+            Player status LEDs (GPIO 14/32/33/25) of the RetroScaler
+            NGC-BlueRetro 4-port GameCube adapter. Rumble is also enabled
+            by default on all outputs to match the factory firmware.
+
     choice
         prompt "Select universal or specific system"
         default BLUERETRO_SYSTEM_UNIVERSAL

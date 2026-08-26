@@ -16,6 +16,7 @@
 #include "adapter/hid_parser.h"
 #include "adapter/mapping_quirks.h"
 #include "hidp/sw2.h"
+#include "system/led.h"
 
 enum {
     BT_ATT_HID_DEVICE_NAME = 0,
@@ -112,6 +113,9 @@ static void bt_att_hid_process_device_name(struct bt_dev *device,
     }
 
     bt_hid_set_type_flags_from_name(device, hid_data->device_name);
+#ifdef CONFIG_RETROSCALER_BLUERETRO_4LEDS_HW
+    dev_led_set(device->ids.id, 1);
+#endif
     printf("dev: %ld type: %ld %s\n", device->ids.id, device->ids.type, hid_data->device_name);
     bt_mon_log(true, "dev: %ld type: %ld %s\n", device->ids.id, device->ids.type, hid_data->device_name);
 

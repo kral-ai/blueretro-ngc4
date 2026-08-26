@@ -27,6 +27,7 @@
 #include "system/manager.h"
 #include "tests/ws_srv.h"
 #include "tests/coverage.h"
+#include "system/led.h"
 #include "sdkconfig.h"
 
 static uint32_t chip_package = EFUSE_RD_CHIP_VER_PKG_ESP32D0WDQ6;
@@ -150,6 +151,9 @@ static void wl_init_task(void *arg) {
 
 void app_main()
 {
+#ifdef CONFIG_RETROSCALER_BLUERETRO_4LEDS_HW
+    dev_led_init();
+#endif
     adapter_init();
 
     start_app_cpu(wired_init_task);

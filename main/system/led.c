@@ -100,3 +100,22 @@ void err_led_pulse(void) {
 uint32_t err_led_get_pin(void) {
     return err_led_pin;
 }
+
+#ifdef CONFIG_RETROSCALER_BLUERETRO_4LEDS_HW
+/* Player status LEDs of the RetroScaler NGC-BlueRetro 4-port adapter */
+static const gpio_num_t dev_led_pin[4] = {14, 32, 33, 25};
+
+void dev_led_init(void) {
+    for (uint32_t i = 0; i < 4; i++) {
+        gpio_reset_iram(dev_led_pin[i]);
+        gpio_set_direction_iram(dev_led_pin[i], GPIO_MODE_OUTPUT);
+        gpio_set_level_iram(dev_led_pin[i], 0);
+    }
+}
+
+void dev_led_set(uint8_t num, uint8_t value) {
+    if (num < 4) {
+        gpio_set_level_iram(dev_led_pin[num], value);
+    }
+}
+#endif

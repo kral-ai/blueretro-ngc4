@@ -223,7 +223,11 @@ static void config_init_struct(struct config *data) {
 
     for (uint32_t i = 0; i < WIRED_MAX_DEV; i++) {
         data->out_cfg[i].dev_mode = DEV_PAD;
+#ifdef CONFIG_RETROSCALER_BLUERETRO_4LEDS_HW
+        data->out_cfg[i].acc_mode = ACC_RUMBLE;
+#else
         data->out_cfg[i].acc_mode = ACC_NONE;
+#endif
         data->in_cfg[i].bt_dev_id = 0x00; /* Not used placeholder */
         data->in_cfg[i].bt_subdev_id = 0x00;  /* Not used placeholder */
         data->in_cfg[i].map_size = KBM_MAX + BR_COMBO_CNT;
