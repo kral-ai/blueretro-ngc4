@@ -38,6 +38,7 @@ Tested on a real GameCube with this exact build:
 | Analog sticks with factory calibration, analog triggers | ✅ tested |
 | Rumble on all 4 ports (enabled by default) | ✅ tested |
 | Player LEDs on the adapter follow connect/disconnect | ✅ tested |
+| Player number LEDs on the controllers themselves | ✅ tested |
 | Melee-safe combos | ✅ (see below) |
 
 Inherited from upstream BlueRetro and expected to work (not all re-tested
@@ -53,8 +54,6 @@ Wii U Pro/PS3, cannot trigger adapter combos until remapped in the web config.)
 
 **Known quirks**
 
-- The player LED **on the controller itself** may show P1 for everyone; the
-  port LEDs **on the adapter** are the ones that tell the truth.
 - New pairings are only accepted while no controller is connected, plus about
   one minute after the first connect. Already-paired controllers reconnect
   any time with a button press. If a brand-new controller will not pair, pair
